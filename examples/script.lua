@@ -8,7 +8,7 @@ Start(function()
         for i, updates in pairs(tab.result) do
             local msg = updates.message
             if msg.text then
-                local callback = function(a, b, var)
+                local callback = function(a, b)
                     printf("Message\t%s\nChat_id\t%s", msg.text, msg.chat.id)
                 end
                 Api:
