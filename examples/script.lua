@@ -1,4 +1,4 @@
-local Api = require 'API'
+local Api = require 'telegram.api'
 Api = Api.Init("213210238:AAEP1XgZOXjIiAqDJvUEDBzBHmLqAzO3Rug")
 local offset
 Api:
