@@ -45,15 +45,6 @@ local Telegram_API_Methods = {
     'stopMessageLiveLocation',
     'unpinChatMessage'
 }
-local media_table_for_curl = {
-    'audio',
-    'document',
-    'video',
-    'animation',
-    'voice',
-    'videonote',
-    'photo'
-}
 local API = {}
 API.__data = {}
 API.__modules = {}
