@@ -21,9 +21,7 @@ build = {
 		"examples"
 	},
 	modules = {
-		telegram = {
-			init = 'src/telegram.lua',
-			api = 'src/api.lua'
-		}
+		["telegram.init"] = 'src/telegram.lua',
+		["telegram.api"] = 'src/api.lua'
 	}
 }
