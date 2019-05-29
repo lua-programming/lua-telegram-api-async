@@ -3,9 +3,14 @@ This is a lua script in test.
 
 You can send messages, files, etc. and it will work as async mode (it is not working by a server)
 
+You can install it by luarocks:
+```bash
+luarocks install telegram
+```
+
 Example:
 ```lua
-local Api = require 'API'
+local Api = require 'telegram.api'
 Api = Api.Init("213210238:AAEP1XgZOXjIiAqDJvUEDBzBHmLqAzO3Rug") -- init with your token
 local offset
 Api:
