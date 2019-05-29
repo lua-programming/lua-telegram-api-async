@@ -1,0 +1,4 @@
+# rocks build files
+*.src.rock
+# testing files
+*test*
