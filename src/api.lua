@@ -59,7 +59,7 @@ local cop2      = cqueues.new()
 function API:Request(method, parameters, callback)
     assert(parameters, 'error: parameters not found.\n\tExecute: method:Parameters({list})')
     assert(self.URL , 'error: token not found.\n\tExecute: method:Init(\'BotToken\')')
-    local utils = require 'utils'
+    local utils = require 'telegram.utils'
     local boundary = utils.generate_boundary(10)
     local source = {}
     if parameters.define then
