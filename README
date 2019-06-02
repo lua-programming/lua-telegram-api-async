@@ -1,0 +1,45 @@
+lua-telegram-api-async
+ Install it by LuaRocks: luarocks install telegram
+
+ IMPORTANT: This is a lua module in test.
+
+ You can send messages, files, etc. and it will work as async mode (it is not working by a server)
+ Its uses are like this:
+ Api : method see methods https://core.telegram.org/bots/api#available-methods
+
+telegram.utils
+ printf(string, values), global: format print: uses: printf("%s\n", "test")
+
+ tprintf(table, string, values), global: print on table index 1 some text: uses: table_test= {}; tprintf(table_text, "%s\n", "test"); tprintf(table_text, "%s\n", "test 2")
+
+ vardump(table), global: show table content: uses: vardump(table)
+
+ string.mgsub(string, table), global, string: multi-gsub function: uses: string.mgsub("string", { ["str"] = "hel", ["ing"] = "lo" });  str = "string"; str:mgsub { ["str"] = "hel", ["ing"] = "lo" }
+
+ string.emd(string), global, string: escape markdown: uses: string.emd("*markdown*"); markdown = "*markdown*"; markdown:emd()
+
+ string.rmd(string), global, string: remove markdown: uses: string.rmd("*markdown*"); markdown = "*markdown*"; markdown:rmd()
+
+ string.ehtml(string), global, string: escape html: uses: string.ehtml("<b>Hello</b>"); html = "<b>Hello</b>"; html:ehtml()
+
+ string.rhtml(string), global, string: remove html tags (not text inside included): uses: string.rhtml("<b>Hello</b>"); html = "<b>Hello</b>"; html:rhtml()
+
+ string.trim(string), global, string: trim text: uses: string.trim(" text test "); text = " text test "; text:trim()
+
+ sleep(seconds), local: execute a pause for X seconds: uses: library.sleep(5)
+
+ create_readonly_table(table), local: create a read only table: uses: my_table = library.create_readonly_table { var = 5 }
+
+ plink(table), local: create telegram link with text: uses: library.plink { text="google", link="https://google.com", parse_mode="markdown" }
+
+ download(url, path), local: download some file from some url: uses: library.download("http://www.google.com/logos/doodles/2015/googles-new-logo-5078286822539264.2-hp.gif", "/tmp")
+
+ generate_boundary(limit_chars), local: generate boundary text: uses: library.generate_boundary(10)
+
+telegram.api
+ All of then are locals.
+ Loop(): run API methods (webHooks recommended)
+
+ Running(script_function): run API methods using a while function (getUpdates recommended)
+
+ Request(method, parameters, callback): send a request to api.telegram.org using your configured token (async mode not included): uses: library:Request("sendMessage", {chat_id = 123456, text = "hello"}, function() print("Finished") end) 
