@@ -122,8 +122,8 @@ end
 function API:Loop()
     thread:loop()
 end
-function API:Running(_function_)
-    while true do
+function API:Running(_function_, condition)
+    while condition do
         cop2:wrap(function()
             assert(thread:loop())
         end)
