@@ -3,5 +3,5 @@ local libs = {
 	'utils'
 }
 local _ = {}
-for i,x in next, libs do _[x] = require(string.format("telegram.%s", x)) end
+for i,x in next, libs do _[x] = require( ('telegram.%s') : format (x) ) end
 return _
