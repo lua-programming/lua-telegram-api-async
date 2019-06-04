@@ -40,4 +40,4 @@ local function script()
     Api : getUpdates({offset = update_id+1}, updates)
 end
 
-Api : Running (script)
+Api : Running (script, true)
