@@ -7,14 +7,12 @@ local function script()
         for i, updates in pairs(tab.result) do
             local msg = updates.message
             if msg.text then
-                local callback = function(result, description, vars)
-                    local msg_text = "Message\t%s\nChat_id\t%s\nUpdate_id\t%i\n"
-                    msg_text = msg_text:format(vars.msg.text, vars.msg.chat.id, updates.update_id)
+                local callback = function(result, description, var)
                     printf("----------\t%s\t----------\n", "Sleep testing")
                     Utils.sleep(5)
                     Api : sendMessage {
-                        chat_id = vars.msg.chat.id,
-                        text = msg_text
+                        chat_id = var.chat.id,
+                        text = "I'm awake!"
                     }
                     if description == '200' then
                         printf("----------\t%s\t----------\n", "Message sent")
@@ -22,19 +20,26 @@ local function script()
                         printf("----------\t%s\t----------\n", "Error sending messsage")
                     end
                 end
-                if msg.text == "/test" then
+                if msg.text == "/wait" then
                     Api : sendMessage({
                         chat_id = msg.chat.id,
-                        text = "Wait for 5 seconds...",
+                        text = "I'll sleep for 5 seconds...",
                         define = {
-                            msg = msg
+                            chat = { id = msg.chat.id },
+                            text = msg.text,
+                            update_id = updates.update_id
                         }
-                    }, callback)
+                    }, assert(callback))
+                elseif msg.text == "/testup" then
+                    Api : sendMessage {
+                        chat_id = msg.chat.id,
+                        text = "It's up!"
+                    }
                 end
             end
             update_id = updates.update_id
         end
     end
-    Api : getUpdates({offset = update_id+1}, updates)
+    Api : getUpdates({offset = update_id+1}, assert(updates))
 end
 Api : Running(script)
