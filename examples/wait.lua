@@ -29,7 +29,7 @@ local function script()
                             text = msg.text,
                             update_id = updates.update_id
                         }
-                    }, assert(callback))
+                    }, callback)
                 elseif msg.text == "/testup" then
                     Api : sendMessage {
                         chat_id = msg.chat.id,
@@ -40,6 +40,6 @@ local function script()
             update_id = updates.update_id
         end
     end
-    Api : getUpdates({offset = update_id+1}, assert(updates))
+    Api : getUpdates({offset = update_id+1}, updates)
 end
 Api : Running(script)
